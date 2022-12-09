@@ -1,0 +1,8 @@
+
+
+#1. Create a program that will expect text input from the user and add whether the entered text is a "number"
+# or a "word"
+
+#2. If the entered text is "number", the program must also indicate whether it is even or odd number
+
+#3. If it is a "word", the program must show its length
