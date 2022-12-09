@@ -12,27 +12,22 @@ def check_type(input_string):
         else:
             uniq_chars[uniq_char] = 1
 
-    # cleare input string from invalid symbols
-    cleared_string = "".join(char for char in input_string if char.isalnum())
 
-    # check the type of cleared input string
-    if cleared_string.isalpha() == True:
-        print(f"Data type: strings\nString lenght: {len(input_string)}")
+    # check the type of input string
+    if input_string == "":
+        print("Data type: input string is empty")
 
-    elif cleared_string.isdigit() == True:
-        print("Data type: numeric.")
+    elif input_string.isdigit() == True:
+        print("Data type: digit.")
 
-        if int(cleared_string) % 2 == 0:
-            print(f"{cleared_string} is even number.")
+        if int(input_string) % 2 == 0:
+            print(f"{input_string} is even number.")
 
         else:
-            print(f"{cleared_string} is odd number.")
-
-    elif cleared_string.isalnum() == True:
-        print("Data type: strings and numerics")
+            print(f"{input_string} is odd number.")
 
     else:
-        print("Data type: input string is empty or contain invalid chars")
+        print(f"Data type: string\nString lenght: {len(input_string)}")
 
 
     print(f"Uniq chars: {uniq_chars}")
@@ -40,4 +35,4 @@ def check_type(input_string):
 
 user_input = input("Please, write something: ")
 
-check_type(user_input)
+check_type(user_input.strip())
