@@ -6,5 +6,5 @@ import time
 
 while True:
 
-    time_out = time.sleep(4.2)
+    time.sleep(4.2)
     print("I love Python")

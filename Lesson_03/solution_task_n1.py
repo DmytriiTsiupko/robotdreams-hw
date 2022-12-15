@@ -9,7 +9,7 @@ def check_chars(input_string):
 
     for char in input_string:
 
-        if char.isdigit() == True:
+        if char.isdigit():
             print(f"{char} is a digit", end=" ")
 
             if int(char) % 2 == 0:
@@ -17,16 +17,15 @@ def check_chars(input_string):
             else:
                 print(f"and it's an odd number")\
 
-        elif char.isalpha() == True:
+        elif char.isalpha():
             print(f"{char} is a string", end=" ")
 
-            if char.isupper() == True:
+            if char.isupper():
                 print("and it's a capital letter")
             else:
                 print("and it's a small letter")
 
         else:
-            if char.isdigit() != True and char.isalpha() != True:
                 print(f"{char} is a symbol")
 
 input_string = input("Please, write something: ")
