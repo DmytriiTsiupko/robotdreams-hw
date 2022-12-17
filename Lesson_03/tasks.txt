@@ -1,0 +1,9 @@
+
+1. Create a program that will expect the user to enter text and output information for each typed character:
+
+- this "number" + what it is (even, odd),
+- this is a "letter" + what is it (uppercase or lowercase),
+- is a "symbol"
+
+2. Create a program that will print “I love Python” to the console every 4.2 seconds until its execution is manually
+interrupted.
