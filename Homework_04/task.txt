@@ -1,0 +1,9 @@
+Create a phonebook that will have the following commands:
+
+- stats : number of contacts
+- show <name> : detailed information by name
+- add : add contact
+- delete <name>: delete contact by name (key)
+- exit : end the program
+
+Entries must not be repeated, it is forbidden to overwrite entries, only delete and add again.
