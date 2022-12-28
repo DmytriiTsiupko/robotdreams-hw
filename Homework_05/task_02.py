@@ -25,8 +25,14 @@ class Fibonacci:
 print("### Fibonacci Iterator ###")
 
 while True:
-    fibonacci_sequence = Fibonacci(int(input("-> ")))
+    try:
+        input_number = int(input("-> "))
+        fibonacci_sequence = Fibonacci(input_number)
 
-    fibonacci_list = [numb for numb in fibonacci_sequence]
+        fibonacci_list = [numb for numb in fibonacci_sequence]
 
-    print(f"{fibonacci_sequence.max_number} number in the Fibonacci sequence: {fibonacci_list[-1]}")
+        print(f"{fibonacci_sequence.max_number} number in the Fibonacci sequence: {fibonacci_list[-1]}")
+    except:
+        print("Plese, write the number!")
+
+

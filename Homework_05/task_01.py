@@ -8,7 +8,12 @@ while True:
             yield fib1
             fib1, fib2 = fib2, fib1 + fib2
 
-    input_number = int(input("-> "))
+
+    try:
+        input_number = int(input("-> "))
+    except:
+        print("Please, write the number!")
+
     generator_fibonacci = get_fibonacci(input_number)  # create list comprehension
 
     fibonacci_list = [numb for numb in generator_fibonacci]
