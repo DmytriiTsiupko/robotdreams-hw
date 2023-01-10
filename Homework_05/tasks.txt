@@ -1,0 +1,15 @@
+# 1. Create a program that will receive a number and print the corresponding number in the Fibonacci list using
+#    generators
+
+# 2. Create a program that will accept a number and print the corresponding number in the Fibonacci sequence using
+#    iterators
+
+# 3. Create a program that will accept a number and print the corresponding number in the Fibonacci sequence using
+#    recursion
+
+# 4. Write a program that will return the factorial of the entered
+#    number using recursion
+
+
+
+Example: when entering 3 - output 2, when entering 6 - output 8, when entering 9 - output 34.
