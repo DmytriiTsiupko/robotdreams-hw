@@ -12,9 +12,11 @@ while True:
     try:
         input_number = int(input("-> "))
 
+    except ValueError as value:
+        print(f"Error: {value}\nPlease, write the number!")
+
+    else:
         generator_fibonacci = get_fibonacci(input_number)
         fibonacci_list = list(generator_fibonacci)
 
         print(f"{input_number} number in the Fibonacci sequence: {fibonacci_list[-1]}\n")
-    except:
-        print("Please, write the number!")

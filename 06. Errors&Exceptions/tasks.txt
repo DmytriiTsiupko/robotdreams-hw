@@ -1,0 +1,10 @@
+# 1. Write your own decorator, the task of which should be to print the name of the function and the time when it was
+  called. The decorator should work the same for different functions.
+
+# 2. Write a custom Exception class, MyCustomException, which should report "Custom exception is occurred".
+
+# 3. Write your own context manager whose task will be to print "==========" - 10 characters are equal before code
+  execution and after code execution, thus highlighting the block of code with equals characters.
+
+# 4. Write a try ... else ... else ... finally construction that will do exactly what previous task's context
+  manager did.

@@ -27,12 +27,14 @@ print("### Fibonacci Iterator ###")
 while True:
     try:
         input_number = int(input("-> "))
-        fibonacci_sequence = Fibonacci(input_number)
 
+    except ValueError as value:
+        print(f"Error: {value}\nPlease, write the number!")
+
+    else:
+        fibonacci_sequence = Fibonacci(input_number)
         fibonacci_list = [numb for numb in fibonacci_sequence]
 
         print(f"{fibonacci_sequence.max_number} number in the Fibonacci sequence: {fibonacci_list[-1]}")
-    except:
-        print("Plese, write the number!")
 
 

@@ -28,5 +28,8 @@ def check_chars(input_string):
         else:
                 print(f"{char} is a symbol")
 
-input_string = input("Please, write something: ")
-check_chars(input_string)
+
+while True:
+    input_string = input("Please, write something: ")
+
+    check_chars(input_string)
