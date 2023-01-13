@@ -16,7 +16,7 @@ def power(a, b):
     print(a**b)
 
 
-with OwnContextManager() as value:
+with OwnContextManager():
     try:
         power(a=int(input()), b=int(input()))
     except Exception as error_value:

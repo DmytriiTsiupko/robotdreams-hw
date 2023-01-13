@@ -5,20 +5,21 @@ import datetime
 
 def get_log(func):
     def wraps(*args, **kwargs):
-        func(*args, **kwargs)
         print(f"{func} was called at {datetime.datetime.now()}.")
+        result = func(*args, **kwargs)
+        return result
     return wraps
 
 
 @get_log
 def power(a, b):
-    print(a**b)
+    return a**b
 
 
 @get_log
 def plus(a, b):
-    print(a + b)
+    return a + b
 
 
-power(1, 2)
-plus(1, 2)
+print(power(1, 2))
+print(plus(1, 2))
