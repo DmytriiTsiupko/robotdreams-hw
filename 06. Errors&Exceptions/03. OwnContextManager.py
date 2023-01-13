@@ -13,12 +13,11 @@ class OwnContextManager:
 
 
 def power(a, b):
-    print(a**b)
+    print(a ** b)
 
 
-with OwnContextManager():
-    try:
+try:
+    with OwnContextManager():
         power(a=int(input()), b=int(input()))
-    except Exception as error_value:
-        print(f"{error_value}")
-
+except Exception as error_value:
+    print(f"{error_value}")
