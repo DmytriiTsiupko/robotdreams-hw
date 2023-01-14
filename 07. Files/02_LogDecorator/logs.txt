@@ -1,0 +1,2 @@
+<function power at 0x7fb1d0d86af0> was called at 2023-01-14 19:48:28.979479
+<function power at 0x7f9dc048baf0> was called at 2023-01-14 19:48:33.188663
