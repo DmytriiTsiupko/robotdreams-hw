@@ -13,6 +13,9 @@ while True:
 
     try:
         input_number = int(input("-> "))
+
+    except ValueError as value:
+        print(f"Error: {value}\nPlease, write the number!")
+
+    else:
         print(f"{input_number} number in the Fibonacci sequence: {fibonacci_number(input_number)}")
-    except:
-        print("Please, write the number!")

@@ -13,6 +13,9 @@ while True:
 
     try:
         number = int(input("-> "))
+
+    except ValueError as value:
+        print(f"Error: {value}\nPlease, write the number!")
+
+    else:
         print(f"Factorial of {number} is {get_factorial(number)}")
-    except:
-        print("Please, enter a number!")
