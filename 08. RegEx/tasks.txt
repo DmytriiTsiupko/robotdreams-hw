@@ -1,0 +1,21 @@
+
+
+1. Add phone number validation using RegEx to the task in which you implemented the phone book. Consider the possibility
+of several formats: +380XXXXXXXXX, 380XXXXXXXXX, 0XXXXXXXXX
+
+#######################################################################################################################
+
+2. (optional) Write a program that will:
+
+read text from a file whose name is entered by the user (program argument or input)
+find all emails in the text and change them to *@*.
+
+#######################################################################################################################
+
+3. (optional) Write a program that will:
+
+read text from a file whose name is entered by the user (program argument or input)
+
+find all emails in the text and change them to X***@****X, where X should be replaced by the first and last letters
+of the real address, and all other text should be replaced by *. The number of * does not necessarily have to
+correspond to the number of replaced characters
