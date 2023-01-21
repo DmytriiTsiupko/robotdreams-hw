@@ -1,0 +1,8 @@
+1. Use the file as a database to store phonebook entries from previous tasks.
+
+Your phonebook, previously contained in a dict, should be stored as text in JSON format.
+When closing the program and opening it again, all previous data should be available.
+
+2. Write a decorator that will write to a file the name of the function it decorates and write the time of its call.
+
+3. In the previously written custom Exception, add a record of the error and the time of its occurrence to the file.
