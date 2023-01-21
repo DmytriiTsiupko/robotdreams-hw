@@ -7,7 +7,7 @@ import datetime
 def get_log(func):
     def wraps(*args, **kwargs):
         with open("logs.txt", "a") as file:
-            print(f"{func} was called at {datetime.datetime.now()}", file=file)
+            print(f"{func.__name__} was called at {datetime.datetime.now()}", file=file)
         result = func(*args, **kwargs)
         return result
     return wraps

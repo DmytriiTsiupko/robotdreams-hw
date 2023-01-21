@@ -7,7 +7,7 @@ import json
 import os
 
 
-with open("contacts.json", "a+") as file:
+with open("contacts.json", "a+", encoding='utf-8') as file:
     is_empty = os.stat("contacts.json").st_size == 0
     if is_empty:
         file.write("{}")
@@ -16,8 +16,8 @@ with open("contacts.json", "a+") as file:
 def add_contact():
     with open("contacts.json", "r+") as file_data:
         our_contacts = json.loads(file_data.read())
+        file_data.seek(0)
 
-    with open("contacts.json", "w") as file_data:
         name = input("Write name: ")
 
         if len(name.strip()) != 0:
@@ -105,4 +105,3 @@ while True:
         break
     else:
         print("Invalid command")
-
