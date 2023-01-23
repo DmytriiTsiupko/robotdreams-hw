@@ -12,23 +12,28 @@ import re
 
 def encrypting_email(file_name):
     try:
-        with open(file_name, 'r') as file:   # open file for reading
+        # open file for reading
+        with open(file_name, "r") as file:
             file_data = file.read()
     except Exception as exp_value:
         print(exp_value)
 
     else:
-        emails = re.findall(r"(?:^|\s)(\w+[_\w]*@\w+\.\w+[.]?\w+\b)", file_data)     # finding emails in file
+        # finding emails in file
+        emails = re.findall(r"(?:^|\s)(\w+[_\w]*@\w+\.\w+[.]?\w+\b)", file_data)
         try:
             for mail in emails:
-                encod_mail = f"{mail[0]}***@***{mail[-1]}"               # encode found emails
-                file_data = file_data.replace(mail, encod_mail)              # create text with encoded emails
+                # encode found emails
+                encod_mail = f"{mail[0]}***@***{mail[-1]}"
+                # create text with encoded emails
+                file_data = file_data.replace(mail, encod_mail)
         except Exception as exp_value:
             print(exp_value)
         else:
             try:
-                with open("emails.txt", 'w') as file:
-                    file.write(file_data)             # write new text to file
+                with open("emails.txt", "w") as file:
+                    # write new text to file
+                    file.write(file_data)
                     print("Emails successfully encoded!\n")
             except Exception as exp_value:
                 print(exp_value)
@@ -36,5 +41,3 @@ def encrypting_email(file_name):
 
 while True:
     encrypting_email(input("Write file name: "))
-
-

@@ -92,8 +92,6 @@ def validate_number(number):
         print("Unknown phone number format. Please, write correct number!")
 
 
-
-
 while True:
     print("""\nEnter the command:
 - stats : number of contacts
