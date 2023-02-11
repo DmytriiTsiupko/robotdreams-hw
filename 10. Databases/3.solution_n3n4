@@ -1,0 +1,7 @@
+CREATE TABLE test_primary_key (
+    id INTEGER,
+    first_name TEXT NOT NULL,
+    second_name TEXT NOT NULL,
+    age INTEGER,
+    PRIMARY KEY (first_name, second_name)
+)
