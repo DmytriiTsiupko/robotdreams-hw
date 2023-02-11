@@ -1,0 +1,12 @@
+1. Create a Bot class with the name attribute and the say_name and send_message methods.
+send_message should select the self and message parameters and print the message.
+The say_name method should print the value of the name attribute.
+
+2. Create a TelegramBot class that should be Bot-invulnerable and have a Whole:
+custom attributes url, chat_id (None by default) send_message, set_url and set_chat_id methods.
+
+These methods, except self, must take 1 parameter (url and chat_id respectively) and assign the value of this parameter
+to the url and chat_id attributes respectively.
+
+TelegramBot should also override the send_message method to print the value of the message parameter with any supporting
+ text. This text also has Reply in its url value and chat_id
