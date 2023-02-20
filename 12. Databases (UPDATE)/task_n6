@@ -1,0 +1,5 @@
+SELECT 'http://' || users.id || '/', users.first_name, users.last_name, COUNT(purchase.user_id) AS total_purchases
+FROM users
+LEFT JOIN purchase ON users.id = purchase.user_id
+GROUP BY purchase.user_id
+ORDER BY users.id

@@ -1,0 +1,5 @@
+SELECT 'http://' || users.id || '/', COUNT(books.id) AS purchases_count
+FROM purchase
+RIGHT JOIN users ON purchase.user_id = users.id
+LEFT JOIN books ON purchase.book_id = books.id
+GROUP BY users.id
