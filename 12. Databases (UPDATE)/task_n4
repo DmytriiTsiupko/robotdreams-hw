@@ -1,0 +1,2 @@
+SELECT purchase.user_id, COUNT(*) as purchases_count FROM  purchase
+GROUP BY purchase.user_id
