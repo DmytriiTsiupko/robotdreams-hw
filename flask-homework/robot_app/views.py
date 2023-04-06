@@ -26,12 +26,12 @@ def get_users():
     return ', '.join(random_users)
 
 
-@app.get('/users/<int:id>')
+@app.get('/users/<int:user_id>')
 def get_user_by_id(user_id):
     if user_id % 2 == 0:
-        return user_id
+        return f"User id is {user_id}"
     else:
-        return f"Not Found", 404
+        return "Not Found", 404
 
 
 @app.get('/books')
