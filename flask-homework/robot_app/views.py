@@ -26,14 +26,14 @@ def get_users():
     random_users = []
     for _ in range(count):
         random_users.append(*random.sample(users, k=1))
-    return render_template('users.html', users=random_users)                       #', '.join(random_users)
+    return render_template('users.html', users=random_users)
 
 
 @app.get('/users/<int:user_id>')
 @login_required
 def get_user_by_id(user_id):
     if user_id % 2 == 0:
-        return f"User id is {user_id}"
+        return render_template('user_id.html', user_id=user_id)
     else:
         return "Not Found", 404
 
@@ -55,12 +55,9 @@ def get_random_books():
     else:
         count = random.randint(1, 10)
     random_books = []
-    book_list = "<ul>"
     for _ in range(count):
         random_books.append(*random.sample(books, k=1))
-        book_list += f"<li>{random_books[-1]}</li>"
-    book_list += "</ul>"
-    return book_list
+    return render_template('books.html', books=random_books)
 
 
 @app.get('/books/<title>')
@@ -72,13 +69,8 @@ def capitalize_title(title):
 @app.route('/params')
 @login_required
 def params():
-    rows = []
-    for key, value in request.args.items():
-        rows.append(f"""<tr>
-        <td>{key}</td>
-        <td>{value}</td>
-        </tr>""")
-    return f'<table>{"".join(rows)}</table>'
+    curent_params = {key: value for key, value in request.args.items()}
+    return render_template('params.html', params=curent_params)
 
 
 @app.route('/login', methods=['GET', 'POST'])
