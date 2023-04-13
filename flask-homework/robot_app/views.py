@@ -60,10 +60,9 @@ def get_random_books():
     return render_template('books.html', books=random_books)
 
 
-@app.get('/books/<title>')
-@login_required
-def capitalize_title(title):
-    return title.capitalize()
+@app.get('/books/<int:book_id>')
+def get_book_id(book_id):
+    return render_template('book_id.html', book_id=book_id)
 
 
 @app.route('/params')
