@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
+	<title>Головна сторінка</title>
 </head>
 <body>
-    <h1>Home Page</h1>
-    <ul>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="/books">Books</a></li>
-        <li><a href="/params">Params</a></li>
-    </ul>
+	{% if 'username' in session %}
+		<p>Вітаємо, {{ session.username }}!</p>
+	{% else %}
+		<p>Вітаємо!</p>
+	{% endif %}
+	<p><a href="/logout">Вийти</a></p>
+	<p><a href="/users">Користувачі</a></p>
+	<p><a href="/books">Книги</a></p>
+	<p><a href="/params">Параметри</a></p>
 </body>
 </html>
