@@ -26,7 +26,7 @@ def get_users():
     random_users = []
     for _ in range(count):
         random_users.append(*random.sample(users, k=1))
-    return ', '.join(random_users)
+    return render_template('users.html', users=random_users)                       #', '.join(random_users)
 
 
 @app.get('/users/<int:user_id>')

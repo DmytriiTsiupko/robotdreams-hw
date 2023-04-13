@@ -149,3 +149,5 @@ fabric.properties
 flask-homework/FlaskAppVenv
 
 !/flask-homework/.env
+!/flask-homework/venv/
+!/flask-homework/flaskvenv/
