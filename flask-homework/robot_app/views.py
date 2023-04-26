@@ -1,15 +1,18 @@
-from flask import request, render_template, abort, redirect
+from flask import request, render_template, abort, redirect, session
 from . import app
 import random
 import re
+from .static.wraps import login_required
 
 
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html')
 
 
 @app.route('/users')
+@login_required
 def get_users():
     users = ["John", "Mary", "Peter", "Alisa", "Bob", "Kate", "Ola", "Martin"]
     count = request.args.get('count')
@@ -23,18 +26,20 @@ def get_users():
     random_users = []
     for _ in range(count):
         random_users.append(*random.sample(users, k=1))
-    return ', '.join(random_users)
+    return render_template('users.html', users=random_users)
 
 
 @app.get('/users/<int:user_id>')
+@login_required
 def get_user_by_id(user_id):
     if user_id % 2 == 0:
-        return f"User id is {user_id}"
+        return render_template('user_id.html', user_id=user_id)
     else:
         return "Not Found", 404
 
 
 @app.get('/books')
+@login_required
 def get_random_books():
     count = request.args.get('count')
     books = ["Think Python: How to Think Like a Computer Scientist",
@@ -50,28 +55,21 @@ def get_random_books():
     else:
         count = random.randint(1, 10)
     random_books = []
-    book_list = "<ul>"
     for _ in range(count):
         random_books.append(*random.sample(books, k=1))
-        book_list += f"<li>{random_books[-1]}</li>"
-    book_list += "</ul>"
-    return book_list
+    return render_template('books.html', books=random_books)
 
 
-@app.get('/books/<title>')
-def capitalize_title(title):
-    return title.capitalize()
+@app.get('/books/<int:book_id>')
+def get_book_id(book_id):
+    return render_template('book_id.html', book_id=book_id)
 
 
 @app.route('/params')
+@login_required
 def params():
-    rows = []
-    for key, value in request.args.items():
-        rows.append(f"""<tr>
-        <td>{key}</td>
-        <td>{value}</td>
-        </tr>""")
-    return f'<table>{"".join(rows)}</table>'
+    curent_params = {key: value for key, value in request.args.items()}
+    return render_template('params.html', params=curent_params)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -83,12 +81,20 @@ def login():
         password = request.form.get('password')
         if not username or not password:
             abort(400, 'Username and password are required')
+        else:
+            session['username'] = username
         if not re.match(r'^\w{5,}$', username):
             abort(400, 'Username must be at least 5 characters long')
         if not re.match(r"^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z_-]).{8,}$", password):
             abort(400,
                   'Password must be at least 8 characters long and contain at least 1 uppercase letter and 1 digit')
-        return redirect('/users')
+        return render_template('index.html', username=username)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/login')
 
 
 # ERROR CUSTOMIZATION
