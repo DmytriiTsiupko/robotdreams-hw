@@ -1,8 +1,8 @@
 from flask import request, render_template, abort, redirect, session
 from . import app
-import random
 import re
 from .static.wraps import login_required
+from .models import *
 
 
 @app.route('/')
@@ -11,67 +11,64 @@ def index():
     return render_template('index.html')
 
 
+# USERS_ROUTS
 @app.route('/users')
 @login_required
 def get_users():
-    users = ["John", "Mary", "Peter", "Alisa", "Bob", "Kate", "Ola", "Martin"]
-    count = request.args.get('count')
-    if count:
-        try:
-            count = int(count)
-        except ValueError:
-            return 'Invalid count value'
-    else:
-        count = random.randint(1, 10)
-    random_users = []
-    for _ in range(count):
-        random_users.append(*random.sample(users, k=1))
-    return render_template('users.html', users=random_users)
+    users = Users.query.all()
+    return render_template('users.html', users=users)
 
 
-@app.get('/users/<int:user_id>')
+@app.route('/users/<int:user_id>')
 @login_required
-def get_user_by_id(user_id):
-    if user_id % 2 == 0:
-        return render_template('user_id.html', user_id=user_id)
+def get_user(user_id):
+    user = Users.query.get(user_id)
+    if user:
+        return render_template('user_id.html', user=user)
     else:
-        return "Not Found", 404
+        return render_template('errors/404.html'), 404
 
 
+# BOOKS_ROUTS
 @app.get('/books')
 @login_required
-def get_random_books():
-    count = request.args.get('count')
-    books = ["Think Python: How to Think Like a Computer Scientist",
-             "To Kill a Mockingbird", "The Great Gatsby",
-             "1984",
-             "Pride and Prejudice",
-             "The Catcher in the Rye"]
-    if count:
-        try:
-            count = int(count)
-        except ValueError:
-            return 'Invalid count value'
-    else:
-        count = random.randint(1, 10)
-    random_books = []
-    for _ in range(count):
-        random_books.append(*random.sample(books, k=1))
-    return render_template('books.html', books=random_books)
+def get_books():
+    books = Books.query.all()
+    return render_template('books.html', books=books)
 
 
-@app.get('/books/<int:book_id>')
-def get_book_id(book_id):
-    return render_template('book_id.html', book_id=book_id)
-
-
-@app.route('/params')
+@app.route('/books/<int:book_id>')
 @login_required
-def params():
-    curent_params = {key: value for key, value in request.args.items()}
-    return render_template('params.html', params=curent_params)
+def get_book_by_id(book_id):
+    if book_id:
+        book = Books.query.get(book_id)
+        if book:
+            return render_template('book_id.html', book=book)
+        else:
+            return render_template('errors/404.html'), 404
+    else:
+        books = Books.query.all()
+        return render_template('books.html', books=books)
 
 
+# PURCHASES_ROUTS
+@app.route('/purchases/')
+@login_required
+def get_purchases():
+    purchases = Purchases.query.all()
+    return render_template('purchases.html', purchases=purchases)
+
+
+@app.route('/purchases/<int:purchase_id>')
+def get_purchase_by_id(purchase_id):
+    purchase = Purchases.query.get(purchase_id)
+    if purchase:
+        return render_template('purchase_id.html', purchase=purchase)
+    else:
+        return render_template('errors/404.html'), 404
+
+
+# LOGIN-LOGOUT ROUTS
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "GET":
@@ -98,7 +95,6 @@ def logout():
 
 
 # ERROR CUSTOMIZATION
-
 @app.errorhandler(404)
 def page_not_found():
     return render_template('errors/404.html'), 404
