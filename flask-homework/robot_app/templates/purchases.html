@@ -20,6 +20,7 @@
           <td>{{ purchase.id }}</td>
           <td>{{ purchase.user_id }}</td>
           <td>{{ purchase.book_id }}</td>
+          <td>{{ purchase.date.isoformat() }}</td>
         </tr>
         {% endfor %}
       </tbody>
