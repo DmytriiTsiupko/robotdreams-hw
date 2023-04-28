@@ -148,3 +148,4 @@ fabric.properties
 #Flask application
 flask-homework/FlaskAppVenv
 
+!/django-homework/djvenv/
