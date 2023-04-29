@@ -8,5 +8,6 @@ class Book(models.Model):
     class Meta:
         unique_together = ('title', 'author')
 
-
+    def __str__(self):
+        return f"{self.pk}: {self.title} {self.author}"
 

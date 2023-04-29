@@ -13,4 +13,6 @@ class Purchase(models.Model):
     class Meta:
         ordering = ['-order_date']
 
+    def __str__(self):
+        return f"Order number {self.pk}: ({self.user} {self.book} {self.order_date})"
 
