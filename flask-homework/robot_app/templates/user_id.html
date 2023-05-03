@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>User id</title>
-</head>
-<body>
-	<h1>User id is {{ user_id }}</h1>
-</body>
+  <head>
+    <title>User Info</title>
+  </head>
+  <body>
+    <h1>User Info By Id</h1>
+    {% if user %}
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    {% endif %}
+  </body>
 </html>

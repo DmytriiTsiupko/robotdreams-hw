@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Purchases</title>
+  </head>
+  <body>
+    <h1>All Purchases</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Book ID</th>
+          <th>Order Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for purchase in purchases %}
+        <tr>
+          <td>{{ purchase.id }}</td>
+          <td>{{ purchase.user_id }}</td>
+          <td>{{ purchase.book_id }}</td>
+          <td>{{ purchase.date.isoformat() }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
