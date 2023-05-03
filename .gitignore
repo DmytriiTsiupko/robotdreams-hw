@@ -147,3 +147,5 @@ fabric.properties
 
 #Flask application
 
+/django/.env
+/django/venv/
