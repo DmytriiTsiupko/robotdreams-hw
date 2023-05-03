@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase</title>
+</head>
+<body>
+      {% if purchase %}
+          <h2>Purchase Information</h2>
+          <p><strong>Id:</strong> {{ purchase.id }}</p>
+          <p><strong>User:</strong> {{ purchase.user_id }}</p>
+          <p><strong>Book:</strong> {{ purchase.book_id }}</p>
+          <p><strong>Order_date:</strong> {{ purchase.date.isoformat() }}</p>
+      {% else %}
+          <h2>Purchase not found</h2>
+      {% endif %}
+</body>
+</html>
