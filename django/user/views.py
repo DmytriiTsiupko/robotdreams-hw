@@ -10,3 +10,4 @@ def say_hello(request):
 def get_user_list(request):
     users = list(User.objects.values())
     return JsonResponse(users, safe=False)
+
