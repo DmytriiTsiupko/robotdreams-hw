@@ -146,5 +146,4 @@ fabric.properties
 
 
 #Flask application
-!/flask-homework/.env
-!/flask-homework/flaskvenv/
+
