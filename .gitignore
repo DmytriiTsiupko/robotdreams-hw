@@ -151,3 +151,5 @@ flask-homework/FlaskAppVenv
 
 /django/djvenv/
 /django/.env
+/pyvenv.cfg
+/flask-homework/flaskvenv/
