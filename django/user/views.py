@@ -1,13 +1,15 @@
-from django.shortcuts import render
+from django.views.generic import DetailView, ListView
 from django.http import HttpResponse, JsonResponse
 from .models import User
 
 
-def say_hello(request):
-    return HttpResponse('Hello, users!')
+class UserListViews(ListView):
+    model = User
+    template_name = 'user_list.html'
+    context_object_name = 'users'
 
 
-def get_user_list(request):
-    users = list(User.objects.values())
-    return JsonResponse(users, safe=False)
-
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'user_detail.html'
+    context_object_name = 'user'
