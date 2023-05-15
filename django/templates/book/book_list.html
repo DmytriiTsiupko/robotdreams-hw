@@ -8,8 +8,8 @@
 {% block content %}
     <h1>Books</h1>
     <ul>
-    {% for book in books %}
-        <li><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></li>
+    {% for book in object_list %}
+        <li><a>{{ book.title }} {{ book.author }}</a></li>
     {% empty %}
         <div>No books available.</div>
     {% endfor %}
