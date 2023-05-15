@@ -1,8 +1,10 @@
-from django.shortcuts import render
 from .models import Purchase
-from django.http import JsonResponse
+from django.views.generic import ListView, DetailView
 
 
-def get_all_purchases(request):
-    purchases = list(Purchase.objects.values())
-    return JsonResponse(purchases, safe=False)
+class PurchaseDetailView(DetailView):
+    model = Purchase
+
+
+class PurchaseListView(ListView):
+    model = Purchase

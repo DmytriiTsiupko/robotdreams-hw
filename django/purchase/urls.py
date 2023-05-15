@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import get_all_purchases
+from .views import PurchaseListView, PurchaseDetailView
 
 urlpatterns = [
-    path('', get_all_purchases, name='purchases')
+    path('', PurchaseListView.as_view(), name='purchases'),
+    path('<int:id>', PurchaseDetailView.as_view(), name='purchase_id')
 ]
