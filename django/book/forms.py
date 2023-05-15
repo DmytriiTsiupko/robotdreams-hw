@@ -7,5 +7,3 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = '__all__'
 
-    def get_success_url(self):
-        return revers('book-detail', rgs=[self.id])

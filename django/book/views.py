@@ -1,7 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from .models import Book
-from django.shortcuts import render, redirect
 from .forms import BookForm
 
 
