@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase List</title>
+</head>
+<body>
+{% purchase in object_list %}
+    <div>
+        <p>: id: {{ puechase.id }} order date: {{ purchase.order_date }}</p>
+    </div>
+</body>
+</html>

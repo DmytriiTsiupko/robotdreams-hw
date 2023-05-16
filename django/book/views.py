@@ -1,8 +1,22 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse_lazy
 from .models import Book
+from .forms import BookForm
 
 
-def get_all_books(request):
-    books = list(Book.objects.values())
-    return JsonResponse(books, safe=False)
+class BookDetailView(DetailView):
+    model = Book
+
+
+class BookListView(ListView):
+    model = Book
+
+
+class BookCreateView(CreateView):
+    model = Book
+    form_class = BookForm
+    success_url = reverse_lazy('book-list')
+
+
+
+

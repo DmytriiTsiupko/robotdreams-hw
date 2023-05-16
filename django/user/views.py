@@ -1,13 +1,22 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.views.generic import DetailView, ListView, CreateView
+from django.urls import reverse_lazy
 from .models import User
+from .forms import UserForm
 
 
-def say_hello(request):
-    return HttpResponse('Hello, users!')
+class UserListView(ListView):
+    model = User
+    template_name = 'user_list.html'
+    context_object_name = 'users'
 
 
-def get_user_list(request):
-    users = list(User.objects.values())
-    return JsonResponse(users, safe=False)
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'user_detail.html'
+    context_object_name = 'user'
 
+
+class UserCreateView(CreateView):
+    model = User
+    form_class = UserForm
+    success_url = reverse_lazy('user-list')
