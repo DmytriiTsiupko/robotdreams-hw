@@ -12,7 +12,7 @@ class PurchaseListView(ListView):
     model = Purchase
 
 
-class PurchaseFormView(CreateView):
+class PurchaseCreateView(CreateView):
     model = Purchase
     form_class = PurchaseForm
     success_url = reverse_lazy('purchase-list')
