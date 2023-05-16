@@ -4,7 +4,7 @@ from .models import User
 from .forms import UserForm
 
 
-class UserListViews(ListView):
+class UserListView(ListView):
     model = User
     template_name = 'user_list.html'
     context_object_name = 'users'
@@ -16,7 +16,7 @@ class UserDetailView(DetailView):
     context_object_name = 'user'
 
 
-class UserFormView(CreateView):
+class UserCreateView(CreateView):
     model = User
     form_class = UserForm
     success_url = reverse_lazy('user-list')

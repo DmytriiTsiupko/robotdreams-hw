@@ -8,4 +8,4 @@ class PurchaseForm(forms.ModelForm):
 
     class Meta:
         model = Purchase
-        fields = "__all__"
+        fields = ('id', 'quantity', 'total_price')
