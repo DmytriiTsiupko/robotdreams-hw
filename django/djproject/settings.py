@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 
+
 """
 Django settings for djproject project.
 
@@ -45,7 +46,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'book.apps.BookConfig',
     'purchase.apps.PurchaseConfig',
-    'rest_framework'
+    'rest_framework',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,11 @@ STATIC_URL = os.getenv('STATIC_URL')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ===== REST FRAMEWORK ====
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'djproject.pagination.StandardResultsSetPagination',
+    'PAGE_SIZE': 5
+}
