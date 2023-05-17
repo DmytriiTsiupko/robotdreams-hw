@@ -1,11 +1,11 @@
-from django_filters import rest_framework as filters
+import django_filters
 from .models import Book
 
 
-class BookFilter(filters.FilterSet):
-    title = filters.CharFilter(lookup_expr='icontains')
-    author = filters.CharFilter(lookup_expr='icontains')
-    price = filters.NumberFilter(lookup_expr='icontains')
+class BookFilter(django_filters.FilterSet):
+    title = django_filters.CharFilter(lookup_expr='icontains')
+    author = django_filters.CharFilter(lookup_expr='icontains')
+    price = django_filters.NumberFilter(lookup_expr='icontains')
 
     class Meta:
         model = Book

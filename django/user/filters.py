@@ -1,11 +1,11 @@
-from django_filters import rest_framework as filters
+import django_filters
 from .models import User
 
 
-class UserFilter(filters.FilterSet):
-    first_name = filters.CharFilter(lookup_expr='icontains')
-    last_name = filters.CharFilter(lookup_expr='icontains')
-    age = filters.NumberFilter(lookup_expr='icontains')
+class UserFilter(django_filters.FilterSet):
+    first_name = django_filters.CharFilter(lookup_expr='icontains')
+    last_name = django_filters.CharFilter(lookup_expr='icontains')
+    age = django_filters.NumberFilter(lookup_expr='icontains')
 
     class Meta:
         model = User
