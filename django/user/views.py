@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView
+from rest_framework import filters
 
 from .models import User
 from .forms import UserForm
@@ -38,3 +39,5 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     pagination_class = UserResultsSetPagination
     filterset_class = UserFilter
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['first_name', 'last_name', 'age']

@@ -7,6 +7,7 @@ from .filters import BookFilter
 from .serializers import BookSerializer
 
 from rest_framework.viewsets import ModelViewSet
+from rest_framework import filters
 
 
 # ==== VIEWS ====
@@ -31,6 +32,8 @@ class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filterset_class = BookFilter
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'author', 'price']
 
 
 

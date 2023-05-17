@@ -7,6 +7,8 @@ from .serializers import PurchaseSerializer
 from .filters import PurchaseFilter
 
 from rest_framework.viewsets import ModelViewSet
+from rest_framework import filters
+
 
 
 # ==== VIEWS ====
@@ -31,3 +33,5 @@ class PurchaseViewSet(ModelViewSet):
     queryset = Purchase.objects.all()
     serializer_class = PurchaseSerializer
     filterset_class = PurchaseFilter
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['book_id', 'user_id', 'order_date', 'total_price', 'quantity']

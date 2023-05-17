@@ -5,7 +5,7 @@ from .models import Book
 class BookFilter(filters.FilterSet):
     title = filters.CharFilter(lookup_expr='icontains')
     author = filters.CharFilter(lookup_expr='icontains')
-    price = filters.CharFilter(lookup_expr='icontains')
+    price = filters.NumberFilter(lookup_expr='icontains')
 
     class Meta:
         model = Book
