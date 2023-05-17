@@ -3,10 +3,13 @@ from django.urls import reverse_lazy
 
 from .models import Book
 from .forms import BookForm
-
-from rest_framework.viewsets import ModelViewSet
+from .filters import BookFilter
 from .serializers import BookSerializer
 
+from rest_framework.viewsets import ModelViewSet
+
+
+# ==== VIEWS ====
 
 class BookDetailView(DetailView):
     model = Book
@@ -22,9 +25,12 @@ class BookCreateView(CreateView):
     success_url = reverse_lazy('book-list')
 
 
+# ==== VIEW SETS ====
+
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filterset_class = BookFilter
 
 
 
