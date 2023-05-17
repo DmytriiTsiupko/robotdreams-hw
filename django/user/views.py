@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, ListView, CreateView
+from django.views.generic import DetailView, CreateView
 from django.urls import reverse_lazy
 
 from rest_framework.viewsets import ModelViewSet
@@ -8,6 +8,7 @@ from .models import User
 from .forms import UserForm
 from .serializers import UserSerializer
 from .pagination import UserResultsSetPagination
+from .filters import UserFilter
 
 
 # ==== VIEWS ====
@@ -36,3 +37,4 @@ class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     pagination_class = UserResultsSetPagination
+    filterset_class = UserFilter
