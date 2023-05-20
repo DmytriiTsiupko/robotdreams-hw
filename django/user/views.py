@@ -40,4 +40,5 @@ class UserViewSet(ModelViewSet):
     pagination_class = UserResultsSetPagination
     filterset_class = UserFilter
     filter_backends = [filters.SearchFilter]
+    ordering_fields = ['age', 'id']
     search_fields = ['first_name', 'last_name', 'age']
