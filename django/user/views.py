@@ -1,5 +1,6 @@
 from django.views.generic import DetailView, CreateView
 from django.urls import reverse_lazy
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView
@@ -39,6 +40,6 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     pagination_class = UserResultsSetPagination
     filterset_class = UserFilter
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     ordering_fields = ['age', 'id']
     search_fields = ['first_name', 'last_name', 'age']

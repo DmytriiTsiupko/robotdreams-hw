@@ -140,6 +140,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ===== REST FRAMEWORK ====
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'djproject.pagination.StandardResultsSetPagination',
     'PAGE_SIZE': 5
+}
+
+
+# ===== CELERY =====
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_BEAT_SCHEDULE = {
+    'print-user-count': {
+        'task': 'user.tasks.print_user_count',
+        'schedule': 60.0,  # seconds
+    },
 }

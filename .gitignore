@@ -150,3 +150,5 @@ fabric.properties
 /django/.env
 /django/venv/
 
+/django/celerybeat-schedule.db
+/django/db.sqlite3
