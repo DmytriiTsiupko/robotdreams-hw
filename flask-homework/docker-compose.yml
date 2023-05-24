@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    depends_on:
+      - database
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres-db
+    networks:
+      - nginx_network
+      - database_network
+
+  database:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=flask-project
+      - POSTGRES_PASSWORD=flask-project
+      - POSTGRES_DB=flask-project
+    networks:
+      - database_network
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    networks:
+      - nginx_network
+    depends_on:
+      - app
+
+networks:
+  nginx_network:
+    name: nginx_network
+    driver: bridge
+  database_network:
+    name: database_network
+    driver: bridge
